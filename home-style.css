@@ -1,0 +1,230 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: black;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.5s ease; /* Smooth background color change */
+}
+
+/* Canvas for the Starfield effect */
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+/* Main container holding the content */
+.main-container {
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  animation: fadeIn 2s ease-in-out; /* Fade in effect */
+}
+
+/* Fade in effect */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Title Styling */
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  text-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+h1:hover {
+  color: #7a4eff;
+  transform: translateY(-5px);
+}
+
+/* Paragraph Styling */
+p {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+p:hover {
+  opacity: 1;
+  color: #7a4eff;
+}
+
+/* Button Styling */
+button {
+  font-size: 1.2rem;
+  padding: 12px 25px;
+  background-color: #7a4eff;
+  color: white;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.5s ease, transform 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 0 10px 3px #651fff;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  background-color: #7a4eff;
+  box-shadow: 0 0 15px 3px #651fff;
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: #651fff;
+  box-shadow: 0 0 10px 2.5px #651fff;
+  transform: scale(1.02);
+  transition: background-color 0.05s ease;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #7a4eff;
+}
+
+/* 3D Card Container */
+.card-container {
+  width: 400px;
+  height: 320px;
+  perspective: 1000px;
+  margin-top: 30px;
+  z-index: 1;
+  transition: transform 0.2s ease-out;
+}
+
+/* The 3D Card */
+.card {
+  width: 100%;
+  height: 100%;
+  background-color: #252525;
+  border-radius: 15px;
+  border: 0.1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-out, box-shadow 0.4s ease;
+  position: relative;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transform-style: preserve-3d;
+}
+
+/* Front of the card */
+.card .card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 15px;
+  border: 0.1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  background-color: #252525;
+  transition: background-color 0.3s ease, box-shadow 0.5s ease, transform 0.3s ease;
+}
+
+.card-header {
+  color: white;
+  margin-top: 20px;
+  font-size: 1.6rem;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.card .card-content {
+  list-style-type: disc;
+  text-align: left;
+  margin: 0;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.card .card-content li {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.card .card-face:hover {
+  background-color: #7a4eff;
+  box-shadow: 0 0 15px 3px #651fff;
+  transform: scale(1.05);
+}
+
+.card .card-back {
+  transform: rotateY(180deg);
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  background-color: #252525;
+}
+
+.card:hover {
+  transform: rotateY(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-container {
+    max-width: 85%;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+  }
+  button {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+  }
+
+  .card-container {
+    width: 260px;
+    height: 180px;
+  }
+
+  .card .card-face {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+}

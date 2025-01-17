@@ -1,0 +1,192 @@
+/* Base */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  color: white;
+  overflow: hidden;
+}
+
+/* Main Content Area */
+.main {
+  margin-top: 55px;
+  margin-left: 250px;
+  height: calc(100% - 55px);
+  width: calc(100% - 250px);
+  position: relative;
+  z-index: 0;
+}
+
+.section {
+  display: none;
+}
+
+#code {
+  height: 100%;
+  width: 100%;
+}
+
+/* Sidebar */
+.side {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #222222;
+  border: 0.05px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 10px;
+  z-index: 1;
+}
+
+/* Top Bar */
+.top {
+  height: 55px;
+  width: calc(100% - 250px);
+  position: fixed;
+  top: 0;
+  left: 250px;
+  background-color: #1a1a1a;
+  border: 0.05px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  z-index: 0;
+}
+
+.top button {
+  padding: 10px 20px;
+}
+
+/* Button Effects */
+button {
+  padding: 10px 20px;
+  background-color: #252525;
+  color: white;
+  border-radius: 10px;
+  border: 0.05px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.5s ease, transform 0.3s ease;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  background-color: #7a4eff;
+  box-shadow: 0 0 15px 3px #651fff;
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: #651fff;
+  box-shadow: 0 0 10px 2.5px #651fff;
+  transform: scale(1.02);
+  transition: background-color 0.05s ease;
+}
+
+/* Input Styles */
+input {
+  padding: 10px 20px;
+  background-color: #252525;
+  color: white;
+  border-radius: 10px;
+  border: 0.05px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.5s ease, color 0.3s ease;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+input:hover {
+  background-color: #7a4eff;
+  box-shadow: 0 0 15px 3px #651fff;
+}
+
+input:hover::placeholder {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  background-color: #7a4eff;
+  box-shadow: 0 0 10px 3px #651fff;
+}
+
+input:focus::placeholder {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+/* Title */
+#title {
+  visibility: hidden;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 6px 12px rgba(255, 255, 255, .2);
+}
+
+/* Output Section */
+.output {
+  visibility: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 250px;
+  width: calc(100% - 250px);
+  background-color: rgba(34, 34, 34, .5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  padding: 10px;
+  border: 0.05px solid rgba(255, 255, 255, 0.05);
+  z-index: 1;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Output Content */
+#outputContent {
+  color: white;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 10px;
+  margin: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background-color: #333;
+}
+
+/* Title Styling for Output */
+h3 {
+  color: white;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+/* Style for <pre> element */
+pre {
+  background-color: #252525 !important;
+  color: white !important;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

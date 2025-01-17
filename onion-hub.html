@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Onion Hub</title>
+  <link href="hub-style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="onionw.ico">
+
+  <!-- Include Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="side">
+    <button id="executor" onclick="switchSection('executor')">
+      <i class="fas fa-code"></i> Executor
+    </button> <!-- Terminal icon for Executor -->
+    <button id="hub" onclick="switchSection('hub')">
+      <i class="fas fa-scroll"></i> Script Hub
+    </button> <!-- Changed Script Hub icon to code icon -->
+    <button id="misc" onclick="switchSection('misc')">
+      <i class="fas fa-wrench"></i> Misc
+    </button> <!-- Changed Misc icon to wrench icon -->
+    <button onclick='window.location.href="https://discord.gg/Njd6qUtTf4"' id="discord">
+      <i class="fab fa-discord"></i> Discord
+    </button> <!-- Discord icon -->
+  </div>
+
+  <!-- Top Bar -->
+  <div class="top">
+    <h1 id="title">Onion Hub v0.1</h1>
+    <button id="connect">
+      <i class="fas fa-plug"></i> Connect
+    </button> <!-- Plug icon for Connect -->
+    <button id="execute">
+      <i class="fas fa-play"></i> Execute
+    </button> <!-- Play icon for Execute -->
+    <button id="clear">
+      <i class="fas fa-eraser"></i> Clear
+    </button> <!-- Eraser icon for Clear -->
+    <button id="reset">
+      <i class="fas fa-sync-alt"></i> Reset
+    </button> <!-- Sync icon for Reset -->
+    <button id="r6">
+      <i class="fas fa-user"></i> R6
+    </button> <!-- Changed icon to regular person icon -->
+    <input type="text" id="user" placeholder="Enter username">
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="section" id="executor">
+      <h2>Executor Section</h2>
+      <p>Executor content goes here.</p>
+    </div>
+    <div class="section" id="hub">
+      <h2>Script Hub Section</h2>
+      <p>Script Hub content goes here.</p>
+    </div>
+    <div class="section" id="misc">
+      <h2>Misc Section</h2>
+      <p>Miscellaneous content goes here.</p>
+    </div>
+
+    <!-- Monaco Editor -->
+    <div class="code" id="code"></div>
+
+    <!-- Output Section -->
+    <div id="output" class="output">
+      <h3>Output</h3>
+      <pre id="outputContent">Output will be displayed here...</pre>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.35.0/min/vs/loader.js"></script>
+
+  <script>
+    require.config({
+      paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.35.0/min/vs" }
+    });
+
+    let editor;
+
+    require(["vs/editor/editor.main"], function () {
+      // Create custom Monaco theme with white comments
+      monaco.editor.defineTheme('custom-theme', {
+        base: 'vs-dark',
+        inherit: true,
+        rules: [
+          { token: 'comment', foreground: '#555555' },
+        ],
+        colors: {}
+      });
+
+      // Apply the custom theme
+      monaco.editor.setTheme('custom-theme');
+
+      // Register Lua language for Monaco editor
+      monaco.languages.register({ id: 'lua' });
+
+      // Create Monaco Editor with Lua as the language
+      editor = monaco.editor.create(document.getElementById("code"), {
+        value: `function backdoor()
+  local message = "Thanks for choosing Onion Hub!"
+  return message
+end`,
+        language: 'lua',
+        theme: 'custom-theme',
+        automaticLayout: true
+      });
+    });
+
+    // Rescale the editor when the window is resized
+    window.addEventListener("resize", function () {
+      if (editor) {
+        editor.layout();
+      }
+    });
+
+    // Clear the editor content on button click
+    document.getElementById("clear").addEventListener("click", function () {
+      editor.setValue("");
+    });
+
+    // Function to switch sections and update the URL hash
+    function switchSection(sectionId) {
+      window.location.hash = sectionId;
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.style.display = 'none';
+      });
+      const activeSection = document.getElementById(sectionId);
+      if (activeSection) {
+        activeSection.style.display = 'block';
+      }
+    }
+
+    // On page load, check the URL hash and show the corresponding section
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        switchSection(hash);
+      } else {
+        switchSection('executor');
+      }
+    });
+  </script>
+</body>
+
+</html>
