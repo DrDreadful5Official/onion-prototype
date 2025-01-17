@@ -149,7 +149,7 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem); /* Scales between 1rem and 1.5rem based on viewport width */
   color: white;
   text-align: center;
   padding: 15px;
@@ -177,7 +177,7 @@ a:hover {
 .card .card-content li {
   color: white;
   margin-bottom: 10px;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.5vw, 1rem); /* Scales between 0.8rem and 1rem */
   line-height: 1.6;
 }
 
@@ -213,6 +213,7 @@ a:hover {
   h1 {
     font-size: 2.8rem;
   }
+
   button {
     font-size: 1.1rem;
     padding: 10px 20px;
@@ -224,7 +225,11 @@ a:hover {
   }
 
   .card .card-face {
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 2vw, 1.2rem); /* Ensure scaling on smaller screens */
     padding: 10px;
+  }
+
+  .card .card-content li {
+    font-size: clamp(0.7rem, 1.3vw, 0.9rem);
   }
 }
